@@ -1,25 +1,6 @@
 extends layout
 
 block content
-  - if (article === undefined)
-    - article = {}
-  nav.navbar.navbar-expand-lg.navbar-dark(style='background-color: #00cc99;')
-    a.navbar-brand(href='/')
-      i.fa.fa-diamond(aria-hidden='true')
-      |       部落格
-    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarNavAltMarkup.collapse.navbar-collapse
-      .navbar-nav.ml-auto
-        a.nav-item.nav-link(href='/archives/-L2TajOWL1ycB_hwyiK-')
-          | 心得 
-          span.sr-only (current)
-        a.nav-item.nav-link(href='/archives/-L2VDz-ovFCKMA34kfdY')
-          | 課程  
-          span.sr-only (current)
-        a.nav-item.nav-link(href='/archives/-L3VkF87JcRmUUjxhi0g')
-          | 新聞 
-          span.sr-only (current)
   .container
     .hex-blog
       nav.breadcrumb.pl-0
@@ -43,14 +24,3 @@ block content
             p!= article.content
           .card.mb-3
             .card-body
-  footer.bg-light.text-muted.py-5
-    .container
-      ul.list-unstyled.d-flex.justify-content-between
-        li © Copright 2017 六角部落格
-        li.ml-auto
-          a.text-info.mr-1(href='#')
-            i.fa.fa-instagram(aria-hidden='true')
-          a.text-info.mr-1(href='#')
-            i.fa.fa-facebook-square(aria-hidden='true')
-          a.text-info(href='')
-            i.fa.fa-twitter(aria-hidden='true')
