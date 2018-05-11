@@ -1,41 +1,36 @@
 extends layout
-
 block content
+	- if (article === undefined)
+		- article = {}
 	.main.container-fluid.my-4
-		form.row.justify-content-center(method='POST')
+		form.row.justify-content-center(method='POST' action=(article.id) ? "/dashboard/article/update/"+article.id : "/dashboard/article/create")
 			.col-md-6
 				label(for='title') 請輸入標題
-				input#title.form-control(type='text', name='title', placeholder='標題', value='')
+				input#title.form-control(type='text', name='title', placeholder='標題', value=(article.title || ''))
 				hr
-				textarea#editor.form-control(name='content')
+				textarea#editor.form-control(name='content')= (article.content || '')
 				script.
 					CKEDITOR.replace( 'content' );
 			.col-md-3
 				.card.mb-3
 					h6.card-header 分類
 					.card-body
-						.form-check
-							label.form-check-label
-								input.form-check-input(type='radio', name='category', required='', value='-L2TajOWL1ycB_hwyiK-')
-								|               心得
-						.form-check
-							label.form-check-label
-								input.form-check-input(type='radio', name='category', required='', value='-L2VDz-ovFCKMA34kfdY')
-								|               課程
-						.form-check
-							label.form-check-label
-								input.form-check-input(type='radio', name='category', required='', value='-L3VkF87JcRmUUjxhi0g')
-								|               新聞
+						if (categories)
+							each item, index in categories
+								.form-check
+									label.form-check-label
+										input.form-check-input(type='radio', name='category', required='', value=index checked=(index === article.category))
+										|               #{item.name}
 				.card.mb-3
 					h6.card-header 是否公開
 					.card-body
 						.btn-group.btn-group-toggle.w-100(data-toggle='buttons')
-							label.btn.btn-outline-primary.w-100
-								input(type='radio', name='status', autocomplete='off', value='draft')
+							label.btn.btn-outline-primary.w-100(class=(article.status === 'draft') ? "active" : "")
+								input(type='radio', name='status', autocomplete='off', value='draft' checked=(article.status === 'draft'))
 								|  草稿
-							label.btn.btn-outline-primary.w-100
-								input(type='radio', name='status', autocomplete='off', value='public')
+							label.btn.btn-outline-primary.w-100(class=(article.status === 'public') ? "active" : "")
+								input(type='radio', name='status', autocomplete='off', value='public' checked=(article.status === 'public'))
 								|  公開
 				.btn-group.w-100
 					button.btn.btn-outline-primary.w-100(type='submit') 儲存
-	
+

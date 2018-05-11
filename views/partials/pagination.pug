@@ -1,0 +1,10 @@
+nav.my-5(aria-label='Page navigation example')
+  ul.pagination.justify-content-center
+    li.page-item(class=(page.hasPre) ? "" : "disabled")
+      a.page-link(href='/?page='+(page.currentPage-1), tabindex='-1') Previous
+
+    - for (var i = 1; i < page.pageTotal+1; i++)
+      li.page-item(class=(i == page.currentPage) ? "active" : "")
+        a.page-link(href='/?page='+i)!=i
+    li.page-item(class=(page.hasNext) ? "" : "disabled")
+      a.page-link(href='/?page='+(page.currentPage+1)) Next
