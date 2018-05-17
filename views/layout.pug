@@ -15,7 +15,7 @@ html(lang='en')
       }
     
       .text-primary {
-        color: #00cc99 !important;
+        color: #4073c4 !important;
       }
       .post {
         line-height: 1.8;
@@ -25,10 +25,10 @@ html(lang='en')
       - articles = {}
     - if (categories === undefined)
       - categories = {}
-    nav.navbar.navbar-expand-lg.navbar-dark(style='background-color: #00cc99;')
+    nav.navbar.navbar-expand-lg.navbar-dark(style='background-color: #4073c4;')
       a.navbar-brand(href='/')
-        i.fa.fa-diamond(aria-hidden='true')
-        |       部落格
+        i.fa.fa-user-circle(aria-hidden='true')
+        |       Bruce
       button.navbar-toggler(data-target='#navbarNavAltMarkup', data-toggle='collapse', type='button', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarNavAltMarkup.collapse.navbar-collapse
@@ -40,7 +40,7 @@ html(lang='en')
     footer.bg-light.text-muted.py-5
       .container
         ul.list-unstyled.d-flex.justify-content-between
-          li © Copright 2017 六角部落格
+          li © Copright 2018 Bruce Tseng
           li.ml-auto
             a.text-info.mr-1(href='#')
               i.fa.fa-instagram(aria-hidden='true')
